@@ -1,0 +1,66 @@
+{% extends 'Admin.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <form class="form mt-3" enctype="multipart/form-data" method="post" action="/addpolicdetails" style="max-width: 600px; width: 100%; background-color: rgba(255, 255, 255, 0.4); padding: 20px; border-radius: 8px;">
+        <p class="title text-dark text-center">Register</p>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Police Station Name
+                    <input class="form-control" type="text" name="pstn_name" required>
+                </label>
+            </div>
+            <div class="col">
+                <label class="form-label">Place
+                    <input class="form-control" type="text" name="stn_plc">
+                </label>
+            </div>
+            <div class="col">
+                <label class="form-label">Phone Number
+                    <input class="form-control" type="text" name="mob">
+                </label>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Latitude
+                    <input class="form-control" type="text" name="lati">
+                </label>
+            </div>
+            <div class="col">
+                <label class="form-label">Longitude
+                    <input class="form-control" type="text" name="longi">
+                </label>
+            </div>
+            <div class="col">
+                <label class="form-label">Station ID
+                    <input class="form-control" type="text" name="sid">
+                </label>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Username
+                    <input class="form-control" type="text" name="uname">
+                </label>
+            </div>
+            <div class="col">
+                <label class="form-label">Password
+                    <input class="form-control" type="password" name="passw">
+                </label>
+            </div>
+            <div class="col"></div> <!-- Empty column for layout -->
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+{% endblock %}

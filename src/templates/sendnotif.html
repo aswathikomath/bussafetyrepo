@@ -1,0 +1,36 @@
+{%extends 'Admin.html'%}
+{%block body%}
+
+
+
+          <div class="container mt-5">
+
+          
+          <form class="form6 " method="post" action="/sendnotif">
+          
+           
+              <div class="flex6">
+                <input type="hidden" value="{{comid}}" name="comid"/>
+            <label style="width: 100%;">Reply
+
+                <textarea class="input form-control"  placeholder="" id="exampleFormControlTextarea1" rows="3" name="notif"></textarea>
+        </label>
+                
+      
+              </div>
+      
+      
+              <button  class="btn btn-success">Submit</button>
+      
+      
+          </form>
+
+
+    
+
+</div>
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{%endblock%}

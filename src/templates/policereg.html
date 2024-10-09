@@ -1,0 +1,58 @@
+{% extends 'Admin.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <form class="form mt-3" enctype="multipart/form-data" method="post" action="/addhospitaldetails" style="max-width: 600px; width: 100%; background-color: rgba(255, 255, 255, 0.4); padding: 20px; border-radius: 8px;">
+        <p class="title text-dark text-center">Register</p>
+
+
+        <div class="mb-3">
+            <label class="form-label">hospital Name
+                <input class="form-control" type="text" name="hos_name" required>
+            </label>
+
+
+
+            <label class="form-label">place
+                <input class="form-control" type="text" name="hos_plc" >
+            </label>
+        </div>
+
+        <div class="mb-3">
+
+
+
+
+            <label class="form-label">phone Number
+                <input class="form-control" type="text" name="monb">
+            </label>
+             <label class="form-label">Latitude
+                <input class="form-control" type="text" name="lati">
+            </label>
+             <label class="form-label">Longitude
+                <input class="form-control" type="text" name="longi">
+            </label>
+        </div>
+
+
+
+
+         <div class="flex6">
+      <label class="text-white" style="margin-left: 10px;" for=""> <b>Image</b></label>
+      <input class="file" type="file" name="fileField"  placeholder="Image"  required>
+
+
+
+
+      </div>
+
+        <div class="text-center">
+            <button class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+{% endblock %}

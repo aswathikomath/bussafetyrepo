@@ -1,0 +1,89 @@
+{%extends 'Admin.html'%}
+{%block body%}
+
+
+     {%for i in values%}
+ <a href="/addbus"  class="btn btn-primary">Add New bus</a>
+      <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="list-group list-group bg-info">
+                    <li class="list-group-item d-flex justify-content-between align-items-start bg-info">
+
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Bus Name</div>
+                        {{ i[1] }}
+                      </div>
+                    </li>
+
+
+                    <li class="list-group-item d-flex justify-content-between align-items-start bg-info">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Registration Number</div>
+                        {{ i[2] }}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Owner Name</div>
+                   {{ i[3] }}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Mobile Number</div>
+                      {{ i[4] }}
+                      </div>
+                    </li>
+
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">From</div>
+                          {{ i[5] }}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">To</div>
+                         {{ i[6] }}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Depature</div>
+                          {{ i[7] }}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Arrival</div>
+                          {{ i[8] }}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">image</div>
+                           <img src="static/images/{{ i[10] }}" width="50" height="50">
+                        </div>
+                      </li>
+
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Action</div>
+                          <a href="editbus?id={{ i[0] }}" class="btn btn-primary">Edit</a>
+                            <a href="deletebus?id={{ i[0] }}" class="btn btn-danger">Delete</a>
+
+                        </div>
+                      </li>
+                  </ol>
+
+            </div>
+        </div>
+      </div>
+
+    {%endfor%}
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{%endblock%}

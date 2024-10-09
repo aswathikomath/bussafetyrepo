@@ -1,0 +1,139 @@
+{% extends 'Admin.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <form class="form mt-3" enctype="multipart/form-data" method="post" action="/updatebus" style="max-width: 600px; width: 100%; background-color: rgba(255, 255, 255, 0.4); padding: 20px; border-radius: 8px;">
+        <p class="title text-dark text-center">Register</p>
+
+
+        <div class="mb-3">
+            <label class="form-label">Bus Name
+                <input class="form-control" type="text" name="bus_name" value="{{val[1]}}" required>
+            </label>
+
+
+
+            <label class="form-label">Registration Number
+                <input class="form-control" type="text" name="registration_number" value="{{val[2]}}">
+            </label>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Owner Name
+                <input class="form-control" type="text" name="name_of_owner" value="{{val[3]}}">
+            </label>
+
+
+
+            <label class="form-label">Mobile Number
+                <input class="form-control" type="text" name="monb" value="{{val[4]}}">
+            </label>
+        </div>
+
+      <div class="mb-3">
+    <div class="row">
+        <div class="col">
+            <label class="form-label">From</label>
+            <select class="form-select" name="from_location">
+    <option value="" selected disabled>Select</option>
+    <option value="kozhikode" {% if val[5] =="kozhikode" %} selected{% endif %}>Kozhikode</option>
+    <option value="thiruvanathapuram" {% if val[5] =="thiruvanathapuram" %} selected{% endif %}>Thiruvanathapuram</option>
+</select>
+
+        </div>
+        <div class="col">
+            <label class="form-label">To</label>
+            <select class="form-select" name="to_location">
+                <option value="" selected disabled>Select</option>
+                <option {%if val[6]=="thiruvanathapuram"%} selected{%endif%}>Thiruvanathapuram</option>
+                <option {%if val[6]=="kozhikode"%} selected{%endif%}>Kozhikode</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+       <label class="form-label">Departure
+    <input class="form-control" type="datetime-local" name="departure" id="departure" value="{{ val[7] }}" required>
+</label>
+
+<label class="form-label">Arrival
+    <input class="form-control" type="datetime-local" name="arrival" id="arrival" value="{{ val[8] }}" required>
+</label>
+
+<div class="mb-3">
+    <label class="form-label">Total travel hours
+        <input class="form-control" type="text" name="trh" id="totalHours" required readonly>
+    </label>
+</div>
+
+
+       <div class="mb-3">
+    <label class="form-label">Facilities</label>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="facilities" value="wifi" id="wifi"
+               {% if 'wifi' in val[11] %} checked{% endif %}>
+        <label class="form-check-label" for="wifi">WiFi</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="facilities" value="ac" id="ac"
+               {% if 'ac' in val[11] %} checked{% endif %}>
+        <label class="form-check-label" for="ac">Air Conditioning</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="facilities" value="tv" id="tv"
+               {% if 'tv' in val[11] %} checked{% endif %}>
+        <label class="form-check-label" for="tv">TV</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="facilities" value="recliner" id="recliner"
+               {% if 'recliner' in val[11] %} checked{% endif %}>
+        <label class="form-check-label" for="recliner">Recliner Seats</label>
+    </div>
+</div>
+
+         <div class="flex6">
+             <div class="fw-bold">image</div>
+             <img src="static/images/{{ val[10] }}" width="50" height="50">
+              <a href="/changeimage" class="btn btn-danger">Update Image</a>
+         </div>
+
+
+
+
+
+        <div class="text-center">
+            <button class="btn btn-success">Update</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const departureInput = document.getElementById('departure');
+    const arrivalInput = document.getElementById('arrival');
+    const totalHoursInput = document.getElementById('totalHours');
+
+    function calculateTotalHours() {
+        const departure = new Date(departureInput.value);
+        const arrival = new Date(arrivalInput.value);
+
+        if (departure && arrival && !isNaN(departure) && !isNaN(arrival)) {
+            const diffMs = arrival - departure; // Difference in milliseconds
+            const diffHrs = diffMs / (1000 * 60 * 60); // Convert to hours
+            totalHoursInput.value = diffHrs.toFixed(2); // Display hours with 2 decimal places
+        } else {
+            totalHoursInput.value = ''; // Clear if input is invalid
+        }
+    }
+
+    departureInput.addEventListener('change', calculateTotalHours);
+    arrivalInput.addEventListener('change', calculateTotalHours);
+
+    // Initial calculation if values are pre-set
+    calculateTotalHours();
+});
+
+</script>
+
+{% endblock %}
